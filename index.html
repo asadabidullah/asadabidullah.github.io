@@ -256,7 +256,7 @@
     </div>
 </section>
 
-<!-- Minecraft Section — Honest & Simple -->
+<!-- Minecraft Section -->
 <section id="minecraft" class="py-32 px-6 relative">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal">
@@ -268,7 +268,6 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 mb-12">
-            <!-- Server IP Card -->
             <div class="reveal pixel-border rounded-2xl p-8 bg-[#0a0a0a] transition-all duration-500">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
@@ -289,8 +288,6 @@
                     </div>
                     <span class="tooltip-text">Click to copy!</span>
                 </div>
-
-                <!-- Only real data: players and version -->
                 <div class="grid grid-cols-2 gap-3 mt-4">
                     <div class="bg-black/30 border border-white/5 rounded-lg px-3 py-2 text-center">
                         <div id="mcPlayers" class="text-sm font-bold text-white skeleton h-5 w-10 mx-auto"></div>
@@ -303,7 +300,6 @@
                 </div>
             </div>
 
-            <!-- Online Players List -->
             <div class="reveal glow-gold rounded-2xl p-8 bg-[#0a0a0a] border border-amber-500/20 transition-all duration-500 hover:border-amber-500/40" style="transition-delay:.1s">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
@@ -327,7 +323,6 @@
             </div>
         </div>
 
-        <!-- Simple info note instead of fake gamemode cards -->
         <div class="reveal glass rounded-2xl p-8 max-w-2xl mx-auto text-center">
             <div class="flex items-center justify-center gap-2 mb-3">
                 <i data-lucide="info" class="w-4 h-4 text-neutral-500"></i>
@@ -487,16 +482,71 @@
 </div>
 
 <script>
-// ╔══════════════════════════════════════════════════════════════════════╗
-// ║  CONFIG — CHANGE THESE TWO THINGS                                  ║
-// ╚══════════════════════════════════════════════════════════════════════╝
+// ╔═══════════════════════════════════════════════════════════════════════════╗
+// ║  CONFIG — EDIT THESE THREE THINGS                                       ║
+// ╚═══════════════════════════════════════════════════════════════════════════╝
 
+// Your Discord invite link
 const DISCORD_INVITE = 'https://discord.gg/7vuj3HU4vs';
+
+// Your Minecraft server IP (playit.gg or freemcserver)
 const MC_IP = 'since-performance.gl.joinmc.link';
 
-// ╔══════════════════════════════════════════════════════════════════════╗
-// ║  EVERYTHING BELOW RUNS AUTOMATICALLY                                ║
-// ╚══════════════════════════════════════════════════════════════════════╝
+// ── STAFF ROLES ──
+// Type the EXACT names of your staff roles in Discord.
+// Case doesn't matter — "Admin", "admin", "ADMIN" all work.
+// The server owner is ALWAYS shown automatically, no need to add them.
+// Separate multiple roles with commas.
+const STAFF_ROLES = [
+    'Owner/Main Admin',
+    'Co Admin/Moderator',
+    'Chief of Staff',
+    'Staff'
+    // Add more roles here, e.g. 'Helper', 'Co-Owner'
+];
+
+// ╔═══════════════════════════════════════════════════════════════════════════╗
+// ║  EVERYTHING BELOW RUNS AUTOMATICALLY — DON'T EDIT UNLESS YOU KNOW JS      ║
+// ╚═══════════════════════════════════════════════════════════════════════════╝
+
+// Pre-process staff roles to lowercase for easy matching
+var STAFF_ROLES_LOWER = STAFF_ROLES.map(function(r) { return r.toLowerCase(); });
+
+// Check if a member's role counts as staff
+function isStaffRole(m) {
+    // Server owner is always staff
+    if (m.role === 'owner') return true;
+    // Discord's built-in admin/mod flags
+    if (m.role === 'admin' || m.role === 'moderator') return true;
+    // Check against your custom role names
+    if (m.role_name) {
+        var nameLower = m.role_name.toLowerCase();
+        for (var i = 0; i < STAFF_ROLES_LOWER.length; i++) {
+            if (nameLower === STAFF_ROLES_LOWER[i]) return true;
+        }
+        // Fallback: also catch common words if user left the list empty
+        if (STAFF_ROLES_LOWER.length === 0) {
+            if (/admin|mod|owner|manager|lead|staff|helper/i.test(m.role_name)) return true;
+        }
+    }
+    return false;
+}
+
+// Get display label for a staff role
+function getStaffLabel(m) {
+    if (m.role === 'owner') return 'Owner';
+    if (m.role === 'admin') return 'Admin';
+    if (m.role === 'moderator') return 'Mod';
+    if (m.role_name) return m.role_name;
+    return 'Staff';
+}
+
+// Get color class for a staff role
+function getStaffColor(m) {
+    if (m.role === 'owner') return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+    if (m.role === 'admin' || m.role === 'moderator') return 'text-red-400 bg-red-500/10 border-red-500/20';
+    return 'text-purple-400 bg-purple-500/10 border-purple-500/20';
+}
 
 // Set Discord join links
 document.querySelectorAll('#navJoinBtn, #mobileJoinBtn, #heroJoinBtn, #ctaJoinBtn').forEach(function(btn) {
@@ -534,7 +584,7 @@ function showToast() {
     }, 2000);
 }
 
-// MC Server Status
+// ── MC Server Status ──
 async function fetchMCStatus() {
     var badge = document.getElementById('mcStatusBadge');
     var playersEl = document.getElementById('mcPlayers');
@@ -550,36 +600,24 @@ async function fetchMCStatus() {
         if (data.online) {
             badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 text-green-400 border border-green-500/20';
             badge.textContent = 'Online';
-
             var online = data.players ? data.players.online : 0;
             var max = data.players ? data.players.max : 0;
-
             playersEl.textContent = online + '/' + max;
             playersEl.className = 'text-sm font-bold text-green-400';
-
             versionEl.textContent = data.version || '—';
             versionEl.className = 'text-sm font-bold text-white';
-
             playerCountEl.textContent = online + '/' + max;
-
-            if (aboutPlayerCount) {
-                aboutPlayerCount.textContent = online + ' player' + (online !== 1 ? 's' : '') + ' online';
-            }
+            if (aboutPlayerCount) aboutPlayerCount.textContent = online + ' player' + (online !== 1 ? 's' : '') + ' online';
 
             if (data.players && data.players.list && data.players.list.length > 0) {
                 playerListEl.innerHTML = data.players.list.map(function(name) {
                     return '<div class="flex items-center gap-3 py-1.5 px-2 rounded-lg hover:bg-white/5 transition-colors">' +
                         '<img src="https://mc-heads.net/avatar/' + encodeURIComponent(name) + '/24" class="w-6 h-6 rounded" alt="' + name + '" loading="lazy">' +
                         '<span class="text-sm text-neutral-300 font-medium">' + name + '</span>' +
-                        '<span class="ml-auto w-2 h-2 bg-green-500 rounded-full"></span>' +
-                    '</div>';
+                        '<span class="ml-auto w-2 h-2 bg-green-500 rounded-full"></span></div>';
                 }).join('');
             } else {
-                playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500">' +
-                    '<i data-lucide="moon" class="w-8 h-8 mb-2 text-neutral-600"></i>' +
-                    '<span class="text-sm">No players online right now</span>' +
-                    '<span class="text-xs text-neutral-600 mt-1">Be the first to join!</span>' +
-                '</div>';
+                playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500"><i data-lucide="moon" class="w-8 h-8 mb-2 text-neutral-600"></i><span class="text-sm">No players online right now</span><span class="text-xs text-neutral-600 mt-1">Be the first to join!</span></div>';
                 lucide.createIcons();
             }
         } else {
@@ -588,16 +626,10 @@ async function fetchMCStatus() {
     } catch (err) {
         badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20';
         badge.textContent = 'Error';
-        playersEl.textContent = '—';
-        playersEl.className = 'text-sm font-bold text-neutral-500';
-        versionEl.textContent = '—';
-        versionEl.className = 'text-sm font-bold text-neutral-500';
+        playersEl.textContent = '—'; playersEl.className = 'text-sm font-bold text-neutral-500';
+        versionEl.textContent = '—'; versionEl.className = 'text-sm font-bold text-neutral-500';
         playerCountEl.textContent = '—';
-        playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500">' +
-            '<i data-lucide="wifi-off" class="w-8 h-8 mb-2 text-yellow-500/50"></i>' +
-            '<span class="text-sm text-yellow-400">Couldn\'t reach server</span>' +
-            '<span class="text-xs text-neutral-600 mt-1">Check if playit.gg is running</span>' +
-        '</div>';
+        playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500"><i data-lucide="wifi-off" class="w-8 h-8 mb-2 text-yellow-500/50"></i><span class="text-sm text-yellow-400">Couldn\'t reach server</span><span class="text-xs text-neutral-600 mt-1">Check if playit.gg is running</span></div>';
         lucide.createIcons();
         if (aboutPlayerCount) aboutPlayerCount.textContent = 'Unable to fetch status';
     }
@@ -606,16 +638,10 @@ async function fetchMCStatus() {
 function setMCOffline(badge, playersEl, versionEl, playerCountEl, playerListEl, aboutPlayerCount) {
     badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20';
     badge.textContent = 'Offline';
-    playersEl.textContent = '—';
-    playersEl.className = 'text-sm font-bold text-neutral-500';
-    versionEl.textContent = '—';
-    versionEl.className = 'text-sm font-bold text-neutral-500';
+    playersEl.textContent = '—'; playersEl.className = 'text-sm font-bold text-neutral-500';
+    versionEl.textContent = '—'; versionEl.className = 'text-sm font-bold text-neutral-500';
     playerCountEl.textContent = '0/0';
-    playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500">' +
-        '<i data-lucide="server-off" class="w-8 h-8 mb-2 text-red-500/50"></i>' +
-        '<span class="text-sm text-red-400">Server is offline</span>' +
-        '<span class="text-xs text-neutral-600 mt-1">Start the server to go live</span>' +
-    '</div>';
+    playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500"><i data-lucide="server-off" class="w-8 h-8 mb-2 text-red-500/50"></i><span class="text-sm text-red-400">Server is offline</span><span class="text-xs text-neutral-600 mt-1">Start the server to go live</span></div>';
     lucide.createIcons();
     if (aboutPlayerCount) aboutPlayerCount.textContent = 'Server is offline';
 }
@@ -623,14 +649,11 @@ function setMCOffline(badge, playersEl, versionEl, playerCountEl, playerListEl, 
 fetchMCStatus();
 setInterval(fetchMCStatus, 60000);
 
-// Discord Data
+// ── Discord Data ──
 async function fetchDiscordData() {
     try {
         var inviteCode = DISCORD_INVITE.replace(/\/+$/, '').split('/').pop();
-        if (!inviteCode || inviteCode === 'YOUR_INVITE_CODE') {
-            setDiscordFallback();
-            return;
-        }
+        if (!inviteCode || inviteCode === 'YOUR_INVITE_CODE') { setDiscordFallback(); return; }
 
         var inviteRes = await fetch('https://discord.com/api/v10/invites/' + encodeURIComponent(inviteCode) + '?with_counts=true&with_expiration=false');
         if (!inviteRes.ok) throw new Error('Invite fetch failed');
@@ -644,47 +667,50 @@ async function fetchDiscordData() {
         var splashURL = guild.splash ? 'https://cdn.discordapp.com/splashes/' + guild.id + '/' + guild.splash + '.png?size=600' : '';
         var bannerURL = guild.banner ? 'https://cdn.discordapp.com/banners/' + guild.id + '/' + guild.banner + '.png?size=600' : '';
 
+        // Nav
         document.getElementById('navName').textContent = name;
         if (iconURL) {
-            var navIcon = document.getElementById('navIcon');
-            navIcon.src = iconURL; navIcon.alt = name; navIcon.classList.remove('hidden');
+            var navIcon = document.getElementById('navIcon'); navIcon.src = iconURL; navIcon.alt = name; navIcon.classList.remove('hidden');
             document.getElementById('navIconFallback').classList.add('hidden');
         }
 
+        // Hero
         var words = name.split(' ');
         document.getElementById('heroLine1').textContent = words.slice(0, Math.ceil(words.length / 2)).join(' ').toUpperCase();
         document.getElementById('heroLine2').textContent = words.slice(Math.ceil(words.length / 2)).join(' ').toUpperCase();
         document.getElementById('heroOnlineBadge').innerHTML = onlineCount + ' online now';
-
         if (iconURL) {
-            var heroIcon = document.getElementById('heroIcon');
-            heroIcon.src = iconURL; heroIcon.alt = name; heroIcon.classList.remove('hidden');
+            var heroIcon = document.getElementById('heroIcon'); heroIcon.src = iconURL; heroIcon.alt = name; heroIcon.classList.remove('hidden');
             document.getElementById('heroIconFallback').classList.add('hidden');
         }
 
+        // Stats
         document.getElementById('statMembers').textContent = memberCount.toLocaleString();
         document.getElementById('statOnline').textContent = onlineCount.toLocaleString();
 
+        // About
         document.getElementById('aboutName').textContent = name;
         if (bannerURL) document.getElementById('aboutBanner').src = bannerURL;
         else if (splashURL) document.getElementById('aboutBanner').src = splashURL;
 
+        // Footer
         document.getElementById('footerName').textContent = name;
         if (iconURL) {
-            var footerIcon = document.getElementById('footerIcon');
-            footerIcon.src = iconURL; footerIcon.alt = name; footerIcon.classList.remove('hidden');
+            var footerIcon = document.getElementById('footerIcon'); footerIcon.src = iconURL; footerIcon.alt = name; footerIcon.classList.remove('hidden');
             document.getElementById('footerIconFallback').classList.add('hidden');
         }
         document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + name + '. Not affiliated with Mojang or Discord.';
 
-        // Widget data
+        // ── Widget Data (online members, channels, staff) ──
         try {
             var widgetRes = await fetch('https://discord.com/api/v10/guilds/' + guild.id + '/widget.json');
             if (widgetRes.ok) {
                 var widget = await widgetRes.json();
 
+                // Channels
                 document.getElementById('statChannels').textContent = widget.channels ? widget.channels.length : 0;
 
+                // Online members grid
                 if (widget.members && widget.members.length > 0) {
                     var grid = document.getElementById('onlineMembersGrid');
                     var show = widget.members.slice(0, 20);
@@ -695,14 +721,14 @@ async function fetchDiscordData() {
                         var statusColor = m.status === 'online' ? 'bg-green-500' : m.status === 'idle' ? 'bg-yellow-500' : m.status === 'dnd' ? 'bg-red-500' : 'bg-neutral-500';
                         return '<div class="flex flex-col items-center gap-1.5 group" title="' + m.username + ' — ' + m.status + '">' +
                             '<div class="relative online-dot"><img src="' + avatar + '" class="w-14 h-14 rounded-xl object-cover border border-white/10 group-hover:border-white/20 transition-colors" alt="' + m.username + '" loading="lazy"><span class="!static w-3 h-3 ' + statusColor + ' rounded-full border-2 border-[#030303] absolute -bottom-0.5 -right-0.5"></span></div>' +
-                            '<span class="text-[10px] text-neutral-500 truncate max-w-[56px]">' + m.username + '</span>' +
-                        '</div>';
+                            '<span class="text-[10px] text-neutral-500 truncate max-w-[56px]">' + m.username + '</span></div>';
                     }).join('');
                     if (widget.members.length > 20) {
                         document.getElementById('onlineMoreText').textContent = '+ ' + (widget.members.length - 20) + ' more online';
                     }
                 }
 
+                // About avatars
                 if (widget.members && widget.members.length >= 3) {
                     document.getElementById('aboutAvatars').innerHTML = widget.members.slice(0, 3).map(function(m) {
                         var avatar = m.avatar
@@ -712,25 +738,28 @@ async function fetchDiscordData() {
                     }).join('');
                 }
 
-                // Staff
+                // ── STAFF — filtered by your STAFF_ROLES config ──
                 if (widget.members && widget.members.length > 0) {
-                    var staffMembers = widget.members.filter(function(m) {
-                        return m.role === 'owner' || (m.role_name && /admin|mod|owner|manager|lead/i.test(m.role_name));
-                    });
-                    var staffToUse = staffMembers.length > 0 ? staffMembers : [widget.members[0]];
-                    if (staffToUse.length > 0) {
-                        document.getElementById('staffGrid').innerHTML = staffToUse.map(function(m) {
+                    var staffMembers = widget.members.filter(isStaffRole);
+
+                    if (staffMembers.length > 0) {
+                        document.getElementById('staffGrid').innerHTML = staffMembers.map(function(m) {
                             var avatar = m.avatar
                                 ? 'https://cdn.discordapp.com/guilds/' + guild.id + '/users/' + m.id + '/avatars/' + m.avatar + '.png?size=256'
                                 : 'https://cdn.discordapp.com/embed/avatars/' + (parseInt(m.id) % 5) + '.png?size=256';
-                            var roleLabel = m.role === 'owner' ? 'Owner' : (m.role_name || 'Staff');
-                            var roleColor = m.role === 'owner' ? 'text-amber-400 bg-amber-500/10 border-amber-500/20' : 'text-purple-400 bg-purple-500/10 border-purple-500/20';
+                            var label = getStaffLabel(m);
+                            var color = getStaffColor(m);
                             return '<div class="reveal visible glass rounded-2xl p-6 text-center glass-hover transition-all duration-300 hover:scale-[1.02]">' +
                                 '<img src="' + avatar + '" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover border border-white/10" alt="' + m.username + '" loading="lazy">' +
                                 '<h4 class="font-semibold text-white text-sm mb-1">' + m.username + '</h4>' +
-                                '<span class="inline-block px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider border ' + roleColor + '">' + roleLabel + '</span>' +
-                            '</div>';
+                                '<span class="inline-block px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider border ' + color + '">' + label + '</span></div>';
                         }).join('');
+                    } else {
+                        // No matches found — show helpful message
+                        document.getElementById('staffGrid').innerHTML = '<div class="col-span-full text-center py-8">' +
+                            '<p class="text-neutral-500 text-sm mb-2">No staff members detected for the configured roles.</p>' +
+                            '<p class="text-neutral-600 text-xs">Check that your role names match exactly what\'s in the STAFF_ROLES config.</p>' +
+                            '<p class="text-neutral-700 text-xs mt-1">Also make sure the Widget is showing those roles (Discord Server Settings → Widget → Role to display).</p></div>';
                     }
                 }
             } else {
@@ -771,7 +800,6 @@ var revealObserver = new IntersectionObserver(function(entries) {
         if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
     revealObserver.observe(el);
 });
@@ -780,10 +808,7 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(functi
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
         var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
 });
 
