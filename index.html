@@ -40,7 +40,6 @@
         .gradient-text{background:linear-gradient(135deg,#f59e0b,#ef4444,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         .gradient-text-green{background:linear-gradient(135deg,#22c55e,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         .glow-gold{box-shadow:0 0 40px rgba(245,158,11,.15),0 0 80px rgba(245,158,11,.05)}
-        .glow-green{box-shadow:0 0 40px rgba(34,197,94,.15),0 0 80px rgba(34,197,94,.05)}
         .btn-glow{position:relative;overflow:hidden}.btn-glow::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,#f59e0b,#ef4444,#ec4899);border-radius:inherit;z-index:-1;opacity:0;transition:opacity .3s;filter:blur(12px)}.btn-glow:hover::before{opacity:.6}
         .reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.25,.1,.25,1)}.reveal.visible{opacity:1;transform:translateY(0)}
         .reveal-left{opacity:0;transform:translateX(-60px);transition:all .8s cubic-bezier(.25,.1,.25,1)}.reveal-left.visible{opacity:1;transform:translateX(0)}
@@ -57,10 +56,6 @@
     </style>
 </head>
 <body class="text-white font-inter">
-
-<!-- ╔══════════════════════════════════════════════════════════════╗
-     ║  CONFIG — EDIT THESE VALUES TO MATCH YOUR SERVER          ║
-     ╚══════════════════════════════════════════════════════════════╝ -->
 
 <!-- Navigation -->
 <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-white/5">
@@ -117,13 +112,11 @@
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/[0.02] rounded-full animate-spin-slow" style="animation-direction:reverse;animation-duration:30s"></div>
 
     <div class="relative z-10 text-center px-6 max-w-5xl">
-        <!-- Server Icon -->
         <div class="mb-8 animate-fade-up opacity-0" style="animation-fill-mode:forwards">
             <img id="heroIcon" src="" alt="" class="w-24 h-24 rounded-3xl mx-auto object-cover shadow-2xl shadow-black/50 hidden border border-white/10">
             <div id="heroIconFallback" class="w-24 h-24 rounded-3xl mx-auto bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center text-4xl font-black border border-white/10">E</div>
         </div>
 
-        <!-- Online Badge -->
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-up opacity-0 delay-100" style="animation-fill-mode:forwards">
             <span class="relative flex h-2.5 w-2.5">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" style="animation:ping-slow 1.5s cubic-bezier(0,0,0.2,1) infinite"></span>
@@ -134,14 +127,13 @@
             </span>
         </div>
 
-        <!-- Title -->
         <h1 class="text-5xl md:text-7xl lg:text-9xl font-black tracking-tight leading-[0.9] mb-6 animate-fade-up opacity-0 delay-200" style="animation-fill-mode:forwards">
             <span id="heroLine1" class="block text-white">THE ELITE</span>
             <span id="heroLine2" class="block gradient-text animate-gradient">GANG</span>
         </h1>
 
         <p class="text-lg md:text-xl text-neutral-500 font-light max-w-2xl mx-auto mb-10 animate-fade-up opacity-0 delay-400" style="animation-fill-mode:forwards">
-            The ultimate Minecraft & gaming community. Build, compete, and connect with thousands of players worldwide.
+            A chill Minecraft & gaming community. Build, hang out, and have fun with us.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up opacity-0 delay-500" style="animation-fill-mode:forwards">
@@ -155,7 +147,6 @@
             </a>
         </div>
 
-        <!-- Stats -->
         <div class="flex items-center justify-center gap-8 md:gap-16 mt-16 animate-fade-up opacity-0 delay-700" style="animation-fill-mode:forwards">
             <div class="text-center">
                 <div id="statMembers" class="text-2xl md:text-3xl font-bold text-white counter"><span class="skeleton inline-block w-16 h-8"></span></div>
@@ -185,20 +176,16 @@
 <!-- Marquee -->
 <div class="border-y border-white/5 py-4 overflow-hidden bg-[#030303]">
     <div class="animate-marquee whitespace-nowrap flex items-center gap-8">
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="shield-check" class="w-3 h-3 text-green-500"></i> Anti-Cheat Protected</span><span class="text-neutral-800">✦</span>
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="zap" class="w-3 h-3 text-amber-500"></i> 24/7 Uptime</span><span class="text-neutral-800">✦</span>
+        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="shield-check" class="w-3 h-3 text-green-500"></i> Anti-Grief</span><span class="text-neutral-800">✦</span>
         <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="globe" class="w-3 h-3 text-blue-500"></i> Global Community</span><span class="text-neutral-800">✦</span>
         <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="trophy" class="w-3 h-3 text-red-500"></i> Weekly Events</span><span class="text-neutral-800">✦</span>
         <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="headphones" class="w-3 h-3 text-pink-500"></i> Active Support</span><span class="text-neutral-800">✦</span>
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="code" class="w-3 h-3 text-green-500"></i> Custom Plugins</span><span class="text-neutral-800">✦</span>
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="users" class="w-3 h-3 text-amber-500"></i> Elite Community</span><span class="text-neutral-800">✦</span>
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="shield-check" class="w-3 h-3 text-green-500"></i> Anti-Cheat Protected</span><span class="text-neutral-800">✦</span>
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="zap" class="w-3 h-3 text-amber-500"></i> 24/7 Uptime</span><span class="text-neutral-800">✦</span>
+        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="users" class="w-3 h-3 text-amber-500"></i> Chill Vibes</span><span class="text-neutral-800">✦</span>
+        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="shield-check" class="w-3 h-3 text-green-500"></i> Anti-Grief</span><span class="text-neutral-800">✦</span>
         <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="globe" class="w-3 h-3 text-blue-500"></i> Global Community</span><span class="text-neutral-800">✦</span>
         <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="trophy" class="w-3 h-3 text-red-500"></i> Weekly Events</span><span class="text-neutral-800">✦</span>
         <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="headphones" class="w-3 h-3 text-pink-500"></i> Active Support</span><span class="text-neutral-800">✦</span>
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="code" class="w-3 h-3 text-green-500"></i> Custom Plugins</span><span class="text-neutral-800">✦</span>
-        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="users" class="w-3 h-3 text-amber-500"></i> Elite Community</span>
+        <span class="text-sm text-neutral-600 flex items-center gap-2"><i data-lucide="users" class="w-3 h-3 text-amber-500"></i> Chill Vibes</span>
     </div>
 </div>
 
@@ -212,10 +199,10 @@
                     More than just a <span class="gradient-text">Discord server</span>
                 </h2>
                 <p class="text-neutral-400 font-light leading-relaxed mb-6">
-                    <span id="aboutName">The Elite GANG</span> is a thriving community of gamers, builders, redstone engineers, and content creators from all around the world.
+                    <span id="aboutName">The Elite GANG</span> is a chill community of gamers and builders from all around the world.
                 </p>
                 <p class="text-neutral-500 font-light leading-relaxed mb-8">
-                    Whether you're a seasoned veteran or just placed your first block, there's a place for you here. We run weekly events, build competitions, PvP tournaments, and so much more.
+                    We run a simple Minecraft survival server with some basic quality-of-life mods. No pay-to-win, no crazy plugins — just good old Minecraft with friends.
                 </p>
                 <div class="flex items-center gap-6">
                     <div id="aboutAvatars" class="flex -space-x-3">
@@ -244,7 +231,7 @@
     </div>
 </section>
 
-<!-- Online Now Section (Live from Discord) -->
+<!-- Online Now Section -->
 <section id="online-now" class="py-20 px-6 relative bg-[#030303]">
     <div class="absolute inset-0 grid-bg opacity-30"></div>
     <div class="max-w-7xl mx-auto relative z-10">
@@ -256,7 +243,6 @@
             <p class="text-neutral-500 font-light text-sm">Real-time data pulled directly from Discord</p>
         </div>
         <div id="onlineMembersGrid" class="flex flex-wrap justify-center gap-4">
-            <!-- Populated by JS -->
             <div class="skeleton w-16 h-20 rounded-xl"></div>
             <div class="skeleton w-16 h-20 rounded-xl"></div>
             <div class="skeleton w-16 h-20 rounded-xl"></div>
@@ -270,7 +256,7 @@
     </div>
 </section>
 
-<!-- Minecraft Section -->
+<!-- Minecraft Section — Honest & Simple -->
 <section id="minecraft" class="py-32 px-6 relative">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal">
@@ -278,51 +264,78 @@
             <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
                 Join our <span class="gradient-text-green">Minecraft World</span>
             </h2>
-            <p class="text-neutral-500 font-light max-w-xl mx-auto">Survival, Creative, Skyblock, and more — all running on high-performance hardware with custom plugins.</p>
+            <p class="text-neutral-500 font-light max-w-xl mx-auto">A simple survival server with basic mods. Just log in and play.</p>
         </div>
+
         <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Server IP Card -->
             <div class="reveal pixel-border rounded-2xl p-8 bg-[#0a0a0a] transition-all duration-500">
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center"><i data-lucide="server" class="w-5 h-5 text-green-500"></i></div>
-                    <div><h3 class="font-semibold text-white">Server IP</h3><p class="text-xs text-neutral-500">Java & Bedrock Crossplay</p></div>
+                    <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                        <i data-lucide="server" class="w-5 h-5 text-green-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-white">Server IP</h3>
+                        <p class="text-xs text-neutral-500">Copy and paste into Minecraft</p>
+                    </div>
+                    <div id="mcStatusBadge" class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                        Checking...
+                    </div>
                 </div>
                 <div class="tooltip-copy" onclick="copyIP()">
                     <div id="serverIPBox" class="bg-black/50 border border-green-500/20 rounded-xl px-6 py-4 font-mono text-xl text-green-400 hover:border-green-500/40 transition-colors flex items-center justify-between cursor-pointer">
-                        <span>play.theelitegang.net</span>
+                        <span id="mcIPDisplay">yourname.joinplayit.gg</span>
                         <i data-lucide="copy" class="w-5 h-5 text-green-500/60"></i>
                     </div>
                     <span class="tooltip-text">Click to copy!</span>
                 </div>
-                <div class="flex items-center gap-4 mt-4 text-xs text-neutral-500">
-                    <span class="flex items-center gap-1"><i data-lucide="cpu" class="w-3 h-3"></i> 20 TPS</span>
-                    <span class="flex items-center gap-1"><i data-lucide="wifi" class="w-3 h-3"></i> 12ms Ping</span>
-                    <span class="flex items-center gap-1"><i data-lucide="hard-drive" class="w-3 h-3"></i> 64GB RAM</span>
+
+                <!-- Only real data: players and version -->
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <div class="bg-black/30 border border-white/5 rounded-lg px-3 py-2 text-center">
+                        <div id="mcPlayers" class="text-sm font-bold text-white skeleton h-5 w-10 mx-auto"></div>
+                        <div class="text-[10px] text-neutral-500 mt-0.5">Players</div>
+                    </div>
+                    <div class="bg-black/30 border border-white/5 rounded-lg px-3 py-2 text-center">
+                        <div id="mcVersion" class="text-sm font-bold text-white skeleton h-5 w-14 mx-auto"></div>
+                        <div class="text-[10px] text-neutral-500 mt-0.5">Version</div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Online Players List -->
             <div class="reveal glow-gold rounded-2xl p-8 bg-[#0a0a0a] border border-amber-500/20 transition-all duration-500 hover:border-amber-500/40" style="transition-delay:.1s">
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center"><i data-lucide="user" class="w-5 h-5 text-amber-500"></i></div>
-                    <div><h3 class="font-semibold text-white">Owner</h3><p class="text-xs text-neutral-500">Minecraft Profile</p></div>
+                    <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                        <i data-lucide="users" class="w-5 h-5 text-amber-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-white">Players Online</h3>
+                        <p class="text-xs text-neutral-500">Live player list</p>
+                    </div>
+                    <div id="mcPlayerCount" class="text-2xl font-bold text-amber-400">—</div>
                 </div>
-                <div class="bg-black/50 border border-amber-500/20 rounded-xl px-6 py-4 flex items-center gap-4">
-                    <img id="ownerAvatar" src="" alt="" class="w-12 h-12 rounded-lg object-cover hidden">
-                    <div id="ownerAvatarFallback" class="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center text-xl font-bold">E</div>
-                    <div>
-                        <div id="ownerName" class="font-mono text-xl text-amber-400">Loading...</div>
-                        <div id="ownerMeta" class="text-xs text-neutral-500 mt-0.5">Premium Account</div>
+                <div id="mcPlayerList" class="bg-black/50 border border-amber-500/20 rounded-xl p-4 min-h-[140px] max-h-[200px] overflow-y-auto">
+                    <div class="flex items-center justify-center h-full text-neutral-600 text-sm">
+                        <span class="skeleton w-32 h-4"></span>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 mt-4 text-xs text-neutral-500">
-                    <span class="flex items-center gap-1 text-amber-500"><i data-lucide="star" class="w-3 h-3"></i> Server Owner</span>
-                    <span class="flex items-center gap-1"><i data-lucide="crown" class="w-3 h-3"></i> <span id="ownerMemberCount">—</span> Members</span>
+                    <span class="flex items-center gap-1 text-green-500"><i data-lucide="activity" class="w-3 h-3"></i> Live data</span>
+                    <span class="flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3 h-3"></i> Updates every 60s</span>
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="reveal glass rounded-xl p-6 text-center glass-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer" style="transition-delay:.1s"><div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mx-auto mb-3"><i data-lucide="trees" class="w-6 h-6 text-green-500"></i></div><h4 class="font-semibold text-sm mb-1">Survival</h4><p class="text-[11px] text-neutral-500">Custom enchants & land claiming</p></div>
-            <div class="reveal glass rounded-xl p-6 text-center glass-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer" style="transition-delay:.2s"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mx-auto mb-3"><i data-lucide="blocks" class="w-6 h-6 text-blue-500"></i></div><h4 class="font-semibold text-sm mb-1">Creative</h4><p class="text-[11px] text-neutral-500">Unlimited plots & WorldEdit</p></div>
-            <div class="reveal glass rounded-xl p-6 text-center glass-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer" style="transition-delay:.3s"><div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mx-auto mb-3"><i data-lucide="cloud" class="w-6 h-6 text-purple-500"></i></div><h4 class="font-semibold text-sm mb-1">Skyblock</h4><p class="text-[11px] text-neutral-500">Island upgrades & challenges</p></div>
-            <div class="reveal glass rounded-xl p-6 text-center glass-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer" style="transition-delay:.4s"><div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mx-auto mb-3"><i data-lucide="swords" class="w-6 h-6 text-red-500"></i></div><h4 class="font-semibold text-sm mb-1">PvP Arena</h4><p class="text-[11px] text-neutral-500">Ranked matches & kits</p></div>
+
+        <!-- Simple info note instead of fake gamemode cards -->
+        <div class="reveal glass rounded-2xl p-8 max-w-2xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-2 mb-3">
+                <i data-lucide="info" class="w-4 h-4 text-neutral-500"></i>
+                <h4 class="font-semibold text-neutral-300 text-sm">What to expect</h4>
+            </div>
+            <p class="text-sm text-neutral-500 font-light leading-relaxed">
+                Simple survival with basic quality-of-life mods. No pay-to-win, no overpowered plugins — just vanilla-style Minecraft with some small improvements. Come build and hang out.
+            </p>
         </div>
     </div>
 </section>
@@ -333,15 +346,15 @@
         <div class="text-center mb-16 reveal">
             <span class="text-[10px] font-medium text-red-400 uppercase tracking-[0.2em] mb-4 block">Documentation</span>
             <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Server <span class="gradient-text">Docs</span></h2>
-            <p class="text-neutral-500 font-light max-w-xl mx-auto">Everything you need to know — from getting started to advanced configurations.</p>
+            <p class="text-neutral-500 font-light max-w-xl mx-auto">Everything you need to know to get started.</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.05s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5 text-blue-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600 group-hover:text-white"></i></div><h3 class="font-semibold text-lg mb-2">Getting Started</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">Complete beginner's guide — how to join, setup, and navigate the server for the first time.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Guide</span><span>5 min read</span></div></div>
-            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.1s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center"><i data-lucide="shield" class="w-5 h-5 text-green-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Land Claiming</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">How to protect your builds with our claiming system. Covers grief prevention and trust settings.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Tutorial</span><span>8 min read</span></div></div>
-            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.15s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center"><i data-lucide="sparkles" class="w-5 h-5 text-purple-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Custom Enchantments</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">Full list of custom enchants, how to obtain them, and upgrade paths for your gear.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Reference</span><span>12 min read</span></div></div>
-            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.2s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center"><i data-lucide="coins" class="w-5 h-5 text-amber-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Economy Guide</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">Understanding the server economy — shops, auctions, jobs, and how to earn coins fast.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Guide</span><span>7 min read</span></div></div>
-            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.25s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center"><i data-lucide="swords" class="w-5 h-5 text-red-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">PvP & Ranked</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">PvP mechanics, ranked system, ELO calculations, and seasonal rewards breakdown.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Mechanics</span><span>10 min read</span></div></div>
-            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.3s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center"><i data-lucide="terminal" class="w-5 h-5 text-cyan-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Commands List</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">Complete command reference for all players — from basic teleportation to admin tools.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Reference</span><span>15 min read</span></div></div>
+            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.05s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5 text-blue-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Getting Started</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">How to join the server for the first time and get set up.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Guide</span><span>3 min read</span></div></div>
+            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.1s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center"><i data-lucide="shield" class="w-5 h-5 text-green-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Land Claiming</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">How to protect your builds so nobody can mess with them.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Tutorial</span><span>5 min read</span></div></div>
+            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.15s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center"><i data-lucide="package" class="w-5 h-5 text-purple-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Mods We Use</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">List of all the mods on the server and what they do.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Reference</span><span>4 min read</span></div></div>
+            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.2s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5 text-amber-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Server Map</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">View the world map and find your way around.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Tool</span><span>1 min</span></div></div>
+            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.25s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center"><i data-lucide="terminal" class="w-5 h-5 text-cyan-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">Commands List</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">Useful commands you can use on the server.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">Reference</span><span>5 min read</span></div></div>
+            <div class="reveal doc-card relative glass rounded-2xl p-8 glass-hover transition-all duration-500 hover:scale-[1.01] cursor-pointer" style="transition-delay:.3s"><div class="flex items-center justify-between mb-6"><div class="w-10 h-10 rounded-lg bg-pink-500/10 flex items-center justify-center"><i data-lucide="message-circle-question" class="w-5 h-5 text-pink-500"></i></div><i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600"></i></div><h3 class="font-semibold text-lg mb-2">FAQ</h3><p class="text-sm text-neutral-500 font-light leading-relaxed mb-4">Common questions and answers about the server.</p><div class="flex items-center gap-3 text-[11px] text-neutral-600"><span class="px-2 py-1 rounded-md bg-white/5">FAQ</span><span>3 min read</span></div></div>
         </div>
     </div>
 </section>
@@ -353,16 +366,16 @@
     <div class="max-w-7xl mx-auto relative z-10">
         <div class="text-center mb-16 reveal">
             <span class="text-[10px] font-medium text-pink-400 uppercase tracking-[0.2em] mb-4 block">Why Us</span>
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Built <span class="gradient-text">different</span></h2>
-            <p class="text-neutral-500 font-light max-w-xl mx-auto">We don't just run a server — we craft an experience.</p>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">What makes us <span class="gradient-text">different</span></h2>
+            <p class="text-neutral-500 font-light max-w-xl mx-auto">We keep it simple and honest.</p>
         </div>
         <div class="grid md:grid-cols-3 gap-6">
-            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.05s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="zap" class="w-6 h-6 text-amber-400"></i></div><h3 class="font-semibold text-lg mb-3">Zero Lag Guarantee</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">Dedicated hardware with NVMe storage and 10Gbps uplink. We don't cut corners on performance — ever.</p></div>
-            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.1s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="puzzle" class="w-6 h-6 text-purple-400"></i></div><h3 class="font-semibold text-lg mb-3">Custom Plugins</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">100+ custom-coded plugins built in-house. You won't find these features on any other server.</p></div>
-            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.15s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="shield-check" class="w-6 h-6 text-green-400"></i></div><h3 class="font-semibold text-lg mb-3">Anti-Cheat</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">Multi-layered anti-cheat system with AI detection. Fair play is non-negotiable.</p></div>
-            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.2s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="calendar" class="w-6 h-6 text-red-400"></i></div><h3 class="font-semibold text-lg mb-3">Weekly Events</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">Build battles, PvP tournaments, treasure hunts, and movie nights. There's always something happening.</p></div>
-            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.25s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-pink-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="heart" class="w-6 h-6 text-pink-400"></i></div><h3 class="font-semibold text-lg mb-3">Active Community</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">24/7 active chat, voice channels always populated, and staff that actually cares. No ghost towns here.</p></div>
-            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.3s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="database" class="w-6 h-6 text-cyan-400"></i></div><h3 class="font-semibold text-lg mb-3">Daily Backups</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">Automated backups every 6 hours with 30-day retention. Your builds are always safe with us.</p></div>
+            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.05s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="heart" class="w-6 h-6 text-green-400"></i></div><h3 class="font-semibold text-lg mb-3">No Pay-to-Win</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">No ranks, no kits you buy, no advantages for paying. Everyone plays on equal ground.</p></div>
+            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.1s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="shield-check" class="w-6 h-6 text-amber-400"></i></div><h3 class="font-semibold text-lg mb-3">Grief Protection</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">Your builds are safe. We use land claiming so nobody can touch your stuff without permission.</p></div>
+            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.15s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="smile" class="w-6 h-6 text-purple-400"></i></div><h3 class="font-semibold text-lg mb-3">Chill Community</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">No toxicity, no drama. Just people who want to build and have a good time together.</p></div>
+            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.2s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="calendar" class="w-6 h-6 text-red-400"></i></div><h3 class="font-semibold text-lg mb-3">Community Events</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">Build competitions, group projects, and hangout nights. We do stuff together.</p></div>
+            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.25s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-pink-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="message-circle" class="w-6 h-6 text-pink-400"></i></div><h3 class="font-semibold text-lg mb-3">Active Discord</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">People actually talk. Voice channels, text chat, memes — there's always someone around.</p></div>
+            <div class="reveal glass rounded-2xl p-8 glass-hover transition-all duration-500 group" style="transition-delay:.3s"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><i data-lucide="database" class="w-6 h-6 text-cyan-400"></i></div><h3 class="font-semibold text-lg mb-3">Regular Backups</h3><p class="text-sm text-neutral-500 font-light leading-relaxed">World gets backed up regularly so if something goes wrong, we can fix it.</p></div>
         </div>
     </div>
 </section>
@@ -373,15 +386,15 @@
         <div class="text-center mb-16 reveal">
             <span class="text-[10px] font-medium text-red-400 uppercase tracking-[0.2em] mb-4 block">Guidelines</span>
             <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Server <span class="gradient-text">Rules</span></h2>
-            <p class="text-neutral-500 font-light max-w-lg mx-auto">Simple rules to keep things chill for everyone. Break 'em and you're out.</p>
+            <p class="text-neutral-500 font-light max-w-lg mx-auto">Simple rules to keep things chill. Break 'em and you're out.</p>
         </div>
         <div class="space-y-4">
             <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.05s"><div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-red-400">1</span></div><div><h4 class="font-semibold mb-1">Be Respectful</h4><p class="text-sm text-neutral-500 font-light">No harassment, discrimination, racism, sexism, or toxic behavior. Treat others how you'd want to be treated.</p></div></div>
-            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.1s"><div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-orange-400">2</span></div><div><h4 class="font-semibold mb-1">No Griefing or Stealing</h4><p class="text-sm text-neutral-500 font-light">Don't touch what isn't yours. Unclaimed builds are still off-limits. Use the claiming system.</p></div></div>
-            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.15s"><div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-yellow-400">3</span></div><div><h4 class="font-semibold mb-1">No Hacking or Exploiting</h4><p class="text-sm text-neutral-500 font-light">X-ray, fly hacks, speed hacks, duping glitches — all bannable. Report bugs instead of abusing them.</p></div></div>
-            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.2s"><div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-green-400">4</span></div><div><h4 class="font-semibold mb-1">No Spam or Self-Promotion</h4><p class="text-sm text-neutral-500 font-light">Don't flood chat, send unsolicited links, or promote other servers/Discords without permission.</p></div></div>
-            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.25s"><div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-blue-400">5</span></div><div><h4 class="font-semibold mb-1">Follow Discord ToS</h4><p class="text-sm text-neutral-500 font-light">No NSFW content, no underage users under 13, no doxxing. Standard Discord rules apply at all times.</p></div></div>
-            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.3s"><div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-purple-400">6</span></div><div><h4 class="font-semibold mb-1">Listen to Staff</h4><p class="text-sm text-neutral-500 font-light">Staff decisions are final. If you have an issue, appeal through the proper channels — don't argue in chat.</p></div></div>
+            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.1s"><div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-orange-400">2</span></div><div><h4 class="font-semibold mb-1">No Griefing or Stealing</h4><p class="text-sm text-neutral-500 font-light">Don't touch what isn't yours. Unclaimed builds are still off-limits — use the claiming system.</p></div></div>
+            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.15s"><div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-yellow-400">3</span></div><div><h4 class="font-semibold mb-1">No Hacking or Exploiting</h4><p class="text-sm text-neutral-500 font-light">X-ray, fly hacks, speed hacks, duping — all bannable. If you find a bug, report it.</p></div></div>
+            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.2s"><div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-green-400">4</span></div><div><h4 class="font-semibold mb-1">No Spam or Self-Promotion</h4><p class="text-sm text-neutral-500 font-light">Don't flood chat, send unsolicited links, or promote other servers without permission.</p></div></div>
+            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.25s"><div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-blue-400">5</span></div><div><h4 class="font-semibold mb-1">Follow Discord ToS</h4><p class="text-sm text-neutral-500 font-light">No NSFW content, no underage users under 13, no doxxing. Standard Discord rules apply.</p></div></div>
+            <div class="reveal glass rounded-xl p-6 flex items-start gap-5 glass-hover transition-all duration-300" style="transition-delay:.3s"><div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-sm font-bold text-purple-400">6</span></div><div><h4 class="font-semibold mb-1">Listen to Staff</h4><p class="text-sm text-neutral-500 font-light">Staff decisions are final. If you disagree, appeal through proper channels — don't argue in chat.</p></div></div>
         </div>
     </div>
 </section>
@@ -393,10 +406,13 @@
         <div class="text-center mb-16 reveal">
             <span class="text-[10px] font-medium text-amber-400 uppercase tracking-[0.2em] mb-4 block">The Team</span>
             <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Meet the <span class="gradient-text">Staff</span></h2>
-            <p class="text-neutral-500 font-light max-w-lg mx-auto">The people who keep this place running 24/7.</p>
+            <p class="text-neutral-500 font-light max-w-lg mx-auto">The people who keep things running.</p>
         </div>
         <div id="staffGrid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <!-- Populated by JS with invite data + widget data -->
+            <div class="skeleton rounded-2xl h-48"></div>
+            <div class="skeleton rounded-2xl h-48"></div>
+            <div class="skeleton rounded-2xl h-48"></div>
+            <div class="skeleton rounded-2xl h-48"></div>
         </div>
     </div>
 </section>
@@ -437,7 +453,7 @@
                     <div id="footerIconFallback" class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center text-sm font-black">E</div>
                     <span id="footerName" class="font-bold text-sm tracking-wider uppercase">The Elite GANG</span>
                 </div>
-                <p class="text-sm text-neutral-500 font-light leading-relaxed max-w-sm mb-4">The ultimate Minecraft & gaming community. Building worlds and friendships since 2022.</p>
+                <p class="text-sm text-neutral-500 font-light leading-relaxed max-w-sm mb-4">A chill Minecraft & gaming community. No BS, just good times.</p>
             </div>
             <div>
                 <h4 class="font-semibold text-sm mb-4">Server</h4>
@@ -471,360 +487,309 @@
 </div>
 
 <script>
-// ╔══════════════════════════════════════════════════════════════╗
-// ║  ⚡ CONFIG — EDIT THESE 3 VALUES AND YOU'RE GOOD TO GO    ║
-// ╚══════════════════════════════════════════════════════════════╝
-const CONFIG = {
-    // Your Discord invite code (the part after discord.gg/)
-    // Example: if your link is discord.gg/abc123xyz, put "abc123xyz"
-    inviteCode: '7vuj3HU4vs',
+// ╔══════════════════════════════════════════════════════════════════════╗
+// ║  CONFIG — CHANGE THESE TWO THINGS                                  ║
+// ╚══════════════════════════════════════════════════════════════════════╝
 
-    // Your Minecraft username (shown in the Owner card)
-    minecraftUsername: 'FauxFlounder693',
+const DISCORD_INVITE = 'https://discord.gg/7vuj3HU4vs';
+const MC_IP = 'since-performance.gl.joinmc.link';
 
-    // Your Minecraft server IP (shown in the Server IP card + copy button)
-    minecraftServerIP: 'play.theelitegang.net',
-};
-// ═══════════════════════════════════════════════════════════════
+// ╔══════════════════════════════════════════════════════════════════════╗
+// ║  EVERYTHING BELOW RUNS AUTOMATICALLY                                ║
+// ╚══════════════════════════════════════════════════════════════════════╝
 
-let guildData = null;
-let widgetData = null;
-let inviteURL = '#';
+// Set Discord join links
+document.querySelectorAll('#navJoinBtn, #mobileJoinBtn, #heroJoinBtn, #ctaJoinBtn').forEach(function(btn) {
+    btn.href = DISCORD_INVITE;
+});
 
-function setIcon(iconEl, fallbackEl, guildId, iconHash, size) {
-    if (iconHash && guildId) {
-        const url = `https://cdn.discordapp.com/icons/${guildId}/${iconHash}.png?size=${size || 256}`;
-        iconEl.src = url;
-        iconEl.alt = 'Server Icon';
-        iconEl.classList.remove('hidden');
-        if (fallbackEl) fallbackEl.classList.add('hidden');
-    }
-}
+// Set MC IP display
+var mcIPDisplay = document.getElementById('mcIPDisplay');
+if (mcIPDisplay) mcIPDisplay.textContent = MC_IP;
 
-function setAvatar(imgEl, fallbackEl, userId, avatarHash, letter) {
-    if (avatarHash && userId) {
-        imgEl.src = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png?size=128`;
-        imgEl.alt = 'Avatar';
-        imgEl.classList.remove('hidden');
-        if (fallbackEl) fallbackEl.classList.add('hidden');
-    }
-}
-
-function animateNumber(el, target) {
-    const start = performance.now();
-    const duration = 1800;
-    function update(now) {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.floor(eased * target).toLocaleString();
-        if (p < 1) requestAnimationFrame(update);
-        else el.textContent = target.toLocaleString();
-    }
-    requestAnimationFrame(update);
-}
-
+// Copy IP
 function copyIP() {
-    navigator.clipboard.writeText(CONFIG.minecraftServerIP).catch(() => {
-        const t = document.createElement('textarea');
-        t.value = CONFIG.minecraftServerIP;
-        document.body.appendChild(t);
-        t.select();
+    navigator.clipboard.writeText(MC_IP).then(function() {
+        showToast();
+    }).catch(function() {
+        var ta = document.createElement('textarea');
+        ta.value = MC_IP;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
         document.execCommand('copy');
-        document.body.removeChild(t);
+        document.body.removeChild(ta);
+        showToast();
     });
-    const toast = document.getElementById('toast');
+}
+
+function showToast() {
+    var toast = document.getElementById('toast');
     toast.style.opacity = '1';
-    toast.style.transform = 'translate(-50%, 0)';
-    toast.style.pointerEvents = 'auto';
-    setTimeout(() => {
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    setTimeout(function() {
         toast.style.opacity = '0';
-        toast.style.transform = 'translate(-50%, 1rem)';
-        toast.style.pointerEvents = 'none';
-    }, 2500);
+        toast.style.transform = 'translateX(-50%) translateY(16px)';
+    }, 2000);
 }
 
-function updateServerIP() {
-    document.getElementById('serverIPBox').querySelector('span').textContent = CONFIG.minecraftServerIP;
-}
+// MC Server Status
+async function fetchMCStatus() {
+    var badge = document.getElementById('mcStatusBadge');
+    var playersEl = document.getElementById('mcPlayers');
+    var versionEl = document.getElementById('mcVersion');
+    var playerCountEl = document.getElementById('mcPlayerCount');
+    var playerListEl = document.getElementById('mcPlayerList');
+    var aboutPlayerCount = document.getElementById('aboutPlayerCount');
 
-function updateJoinLinks(url) {
-    inviteURL = url;
-    ['navJoinBtn', 'mobileJoinBtn', 'heroJoinBtn', 'ctaJoinBtn', 'footerAppeal', 'footerSupport'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.href = url;
-    });
-}
-
-function updateName(name) {
-    document.getElementById('navName').textContent = name;
-    document.getElementById('footerName').textContent = name;
-    document.getElementById('aboutName').textContent = name;
-    document.getElementById('footerCopy').textContent = `© ${new Date().getFullYear()} ${name}. Not affiliated with Mojang or Discord.`;
-
-    const parts = name.toUpperCase().split(' ');
-    document.getElementById('heroLine1').textContent = parts.slice(0, -1).join(' ') || parts[0];
-    document.getElementById('heroLine2').textContent = parts.length > 1 ? parts[parts.length - 1] : '';
-
-    const fallbacks = ['navIconFallback', 'heroIconFallback', 'footerIconFallback'];
-    fallbacks.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && el.tagName === 'DIV') el.textContent = name.charAt(0).toUpperCase();
-    });
-}
-
-function renderOnlineMembers(members, guildId) {
-    const grid = document.getElementById('onlineMembersGrid');
-    const moreText = document.getElementById('onlineMoreText');
-    if (!members || !members.length) {
-        grid.innerHTML = '<p class="text-sm text-neutral-600 col-span-full">Enable Server Widget in Discord settings to see online members here.</p>';
-        return;
-    }
-    const show = members.slice(0, 20);
-    grid.innerHTML = show.map(m => {
-        const avatarUrl = m.avatar
-            ? `https://cdn.discordapp.com/avatars/${m.id}/${m.avatar}.png?size=64`
-            : `https://cdn.discordapp.com/embed/avatars/${parseInt(m.discriminator) % 5}.png?size=64`;
-        const statusColor = m.status === 'online' ? 'bg-green-500' : m.status === 'idle' ? 'bg-yellow-500' : m.status === 'dnd' ? 'bg-red-500' : 'bg-neutral-500';
-        const gameText = m.game ? m.game.name : '';
-        return `<div class="flex flex-col items-center gap-2 group">
-            <div class="relative online-dot">
-                <img src="${avatarUrl}" class="w-14 h-14 rounded-xl object-cover border border-white/10 group-hover:border-white/20 transition-colors" alt="${m.username}">
-            </div>
-            <span class="text-[10px] text-neutral-500 font-medium truncate max-w-[70px]">${m.username}</span>
-        </div>`;
-    }).join('');
-    if (members.length > 20) {
-        moreText.textContent = `+ ${members.length - 20} more members online`;
-    }
-}
-
-function renderStaff(widgetMembers) {
-    const grid = document.getElementById('staffGrid');
-    // Try to detect "owner" from invite data inviter
-    const inviter = guildData?.inviter;
-    const guildName = guildData?.guild?.name || 'The Elite GANG';
-    const guildId = guildData?.guild?.id;
-
-    const staffList = [];
-
-    // Owner from invite inviter (they created the invite, likely an admin at minimum)
-    if (inviter) {
-        staffList.push({
-            name: inviter.username,
-            id: inviter.id,
-            avatar: inviter.avatar,
-            role: 'Owner',
-            description: 'Server founder',
-            badge: '👑',
-            color: 'amber'
-        });
-    }
-
-    // Fill remaining slots from online widget members (first ones that aren't the inviter)
-    if (widgetMembers && widgetMembers.length) {
-        const inviterId = inviter?.id;
-        let added = 0;
-        for (const m of widgetMembers) {
-            if (m.id === inviterId || added >= 3) continue;
-            staffList.push({
-                name: m.username,
-                id: m.id,
-                avatar: m.avatar,
-                discriminator: m.discriminator,
-                role: added === 0 ? 'Admin' : added === 1 ? 'Moderator' : 'Helper',
-                description: added === 0 ? 'Management' : added === 1 ? 'Moderation' : 'Support',
-                badge: added === 0 ? '⚡' : added === 1 ? '🛡' : '✦',
-                color: added === 0 ? 'red' : added === 1 ? 'blue' : 'green'
-            });
-            added++;
-        }
-    }
-
-    // Fallback if no data at all
-    if (staffList.length === 0) {
-        staffList.push(
-            { name: CONFIG.minecraftUsername, id: null, avatar: null, role: 'Owner', description: 'Server founder', badge: '👑', color: 'amber' },
-            { name: 'Staff Member', id: null, avatar: null, role: 'Admin', description: 'Management', badge: '⚡', color: 'red' },
-            { name: 'Staff Member', id: null, avatar: null, role: 'Moderator', description: 'Moderation', badge: '🛡', color: 'blue' },
-            { name: 'Staff Member', id: null, avatar: null, role: 'Helper', description: 'Support', badge: '✦', color: 'green' },
-        );
-    }
-
-    grid.innerHTML = staffList.map((s, i) => {
-        const avatarUrl = s.avatar && s.id
-            ? `https://cdn.discordapp.com/avatars/${s.id}/${s.avatar}.png?size=128`
-            : null;
-        const borderColor = { amber: 'amber', red: 'red', blue: 'blue', green: 'green', purple: 'purple' }[s.color] || 'amber';
-        const textColor = { amber: 'amber', red: 'red', blue: 'blue', green: 'green', purple: 'purple' }[s.color] || 'amber';
-        return `<div class="reveal glass rounded-2xl p-6 text-center glass-hover transition-all duration-500 hover:scale-[1.03] group" style="transition-delay:${i * 0.08}s">
-            <div class="relative inline-block mb-4">
-                ${avatarUrl
-                    ? `<img src="${avatarUrl}" class="w-20 h-20 rounded-full mx-auto object-cover border-2 border-white/10 group-hover:border-${borderColor}-500/50 transition-colors" alt="${s.name}">`
-                    : `<div class="w-20 h-20 rounded-full mx-auto bg-gradient-to-br from-${borderColor}-500 to-${borderColor}-700 flex items-center justify-center text-2xl font-bold border-2 border-white/10">${s.name.charAt(0)}</div>`
-                }
-                <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-${borderColor}-500 flex items-center justify-center text-[8px] font-bold border-2 border-[#050505]">${s.badge}</div>
-            </div>
-            <h4 class="font-semibold text-sm">${s.name}</h4>
-            <p class="text-[11px] text-${textColor}-400 font-medium mt-0.5">${s.role}</p>
-            <p class="text-[11px] text-neutral-600 mt-2">${s.description}</p>
-        </div>`;
-    }).join('');
-
-    // Re-observe new reveals
-    document.querySelectorAll('#staffGrid .reveal').forEach(el => revealObserver.observe(el));
-}
-
-function renderAboutAvatars(widgetMembers) {
-    const container = document.getElementById('aboutAvatars');
-    if (!widgetMembers || !widgetMembers.length) return;
-    const show = widgetMembers.slice(0, 3);
-    container.innerHTML = show.map(m => {
-        const url = m.avatar
-            ? `https://cdn.discordapp.com/avatars/${m.id}/${m.avatar}.png?size=64`
-            : `https://cdn.discordapp.com/embed/avatars/${parseInt(m.discriminator) % 5}.png?size=64`;
-        return `<img src="${url}" class="w-10 h-10 rounded-full border-2 border-[#050505] object-cover" alt="${m.username}">`;
-    }).join('') + `<div class="w-10 h-10 rounded-full border-2 border-[#050505] bg-neutral-800 flex items-center justify-center text-[10px] font-medium text-neutral-400">+${(guildData?.approximate_member_count || 0).toLocaleString()}</div>`;
-}
-
-// ── MAIN FETCH LOGIC ──
-async function init() {
-    const code = CONFIG.inviteCode;
-    if (code === 'YOUR_INVITE_CODE') {
-        console.warn('⚠️ Set your invite code in CONFIG.inviteCode to load live data.');
-        updateName('The Elite GANG');
-        updateServerIP();
-        renderStaff(null);
-        return;
-    }
-
-    updateServerIP();
-
-    // 1) Fetch invite data (name, icon, member count, online count, inviter)
     try {
-        const res = await fetch(`https://discord.com/api/v10/invites/${code}?with_counts=true`);
-        if (!res.ok) throw new Error(`Invite API returned ${res.status}`);
-        guildData = await res.json();
+        var res = await fetch('https://api.mcsrvstat.us/3/' + encodeURIComponent(MC_IP));
+        var data = await res.json();
 
-        const g = guildData.guild;
-        const name = g.name || 'The Elite GANG';
-        const members = guildData.approximate_member_count || 0;
-        const online = guildData.approximate_presence_count || 0;
-        const guildId = g.id;
-        const iconHash = g.icon;
-        const bannerHash = g.banner;
-        const inviter = guildData.inviter;
+        if (data.online) {
+            badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 text-green-400 border border-green-500/20';
+            badge.textContent = 'Online';
 
-        // Update invite URL
-        updateJoinLinks(`https://discord.gg/${code}`);
+            var online = data.players ? data.players.online : 0;
+            var max = data.players ? data.players.max : 0;
 
-        // Update name everywhere
-        updateName(name);
+            playersEl.textContent = online + '/' + max;
+            playersEl.className = 'text-sm font-bold text-green-400';
 
-        // Update icons
-        if (iconHash) {
-            setIcon(document.getElementById('navIcon'), document.getElementById('navIconFallback'), guildId, iconHash, 64);
-            setIcon(document.getElementById('heroIcon'), document.getElementById('heroIconFallback'), guildId, iconHash, 256);
-            setIcon(document.getElementById('footerIcon'), document.getElementById('footerIconFallback'), guildId, iconHash, 64);
-        }
+            versionEl.textContent = data.version || '—';
+            versionEl.className = 'text-sm font-bold text-white';
 
-        // Update banner in about section
-        if (bannerHash) {
-            document.getElementById('aboutBanner').src = `https://cdn.discordapp.com/banners/${guildId}/${bannerHash}.png?size=1024`;
-        }
+            playerCountEl.textContent = online + '/' + max;
 
-        // Animate stats
-        animateNumber(document.getElementById('statMembers'), members);
-        animateNumber(document.getElementById('statOnline'), online);
+            if (aboutPlayerCount) {
+                aboutPlayerCount.textContent = online + ' player' + (online !== 1 ? 's' : '') + ' online';
+            }
 
-        // Online badge
-        document.getElementById('heroOnlineBadge').innerHTML = `${online.toLocaleString()} Members Online`;
-
-        // About player count
-        document.getElementById('aboutPlayerCount').textContent = `Server Online — ${online.toLocaleString()} members connected`;
-
-        // Owner card
-        if (inviter) {
-            setAvatar(document.getElementById('ownerAvatar'), document.getElementById('ownerAvatarFallback'), inviter.id, inviter.avatar, inviter.username.charAt(0).toUpperCase());
-            document.getElementById('ownerName').textContent = inviter.username;
-            document.getElementById('ownerMeta').textContent = `Discord: ${inviter.username}#${inviter.discriminator}`;
+            if (data.players && data.players.list && data.players.list.length > 0) {
+                playerListEl.innerHTML = data.players.list.map(function(name) {
+                    return '<div class="flex items-center gap-3 py-1.5 px-2 rounded-lg hover:bg-white/5 transition-colors">' +
+                        '<img src="https://mc-heads.net/avatar/' + encodeURIComponent(name) + '/24" class="w-6 h-6 rounded" alt="' + name + '" loading="lazy">' +
+                        '<span class="text-sm text-neutral-300 font-medium">' + name + '</span>' +
+                        '<span class="ml-auto w-2 h-2 bg-green-500 rounded-full"></span>' +
+                    '</div>';
+                }).join('');
+            } else {
+                playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500">' +
+                    '<i data-lucide="moon" class="w-8 h-8 mb-2 text-neutral-600"></i>' +
+                    '<span class="text-sm">No players online right now</span>' +
+                    '<span class="text-xs text-neutral-600 mt-1">Be the first to join!</span>' +
+                '</div>';
+                lucide.createIcons();
+            }
         } else {
-            document.getElementById('ownerName').textContent = CONFIG.minecraftUsername;
+            setMCOffline(badge, playersEl, versionEl, playerCountEl, playerListEl, aboutPlayerCount);
         }
-        document.getElementById('ownerMemberCount').textContent = members.toLocaleString();
+    } catch (err) {
+        badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20';
+        badge.textContent = 'Error';
+        playersEl.textContent = '—';
+        playersEl.className = 'text-sm font-bold text-neutral-500';
+        versionEl.textContent = '—';
+        versionEl.className = 'text-sm font-bold text-neutral-500';
+        playerCountEl.textContent = '—';
+        playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500">' +
+            '<i data-lucide="wifi-off" class="w-8 h-8 mb-2 text-yellow-500/50"></i>' +
+            '<span class="text-sm text-yellow-400">Couldn\'t reach server</span>' +
+            '<span class="text-xs text-neutral-600 mt-1">Check if playit.gg is running</span>' +
+        '</div>';
+        lucide.createIcons();
+        if (aboutPlayerCount) aboutPlayerCount.textContent = 'Unable to fetch status';
+    }
+}
 
-        // 2) Fetch widget data (channels, online members list)
+function setMCOffline(badge, playersEl, versionEl, playerCountEl, playerListEl, aboutPlayerCount) {
+    badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20';
+    badge.textContent = 'Offline';
+    playersEl.textContent = '—';
+    playersEl.className = 'text-sm font-bold text-neutral-500';
+    versionEl.textContent = '—';
+    versionEl.className = 'text-sm font-bold text-neutral-500';
+    playerCountEl.textContent = '0/0';
+    playerListEl.innerHTML = '<div class="flex flex-col items-center justify-center h-full py-6 text-neutral-500">' +
+        '<i data-lucide="server-off" class="w-8 h-8 mb-2 text-red-500/50"></i>' +
+        '<span class="text-sm text-red-400">Server is offline</span>' +
+        '<span class="text-xs text-neutral-600 mt-1">Start the server to go live</span>' +
+    '</div>';
+    lucide.createIcons();
+    if (aboutPlayerCount) aboutPlayerCount.textContent = 'Server is offline';
+}
+
+fetchMCStatus();
+setInterval(fetchMCStatus, 60000);
+
+// Discord Data
+async function fetchDiscordData() {
+    try {
+        var inviteCode = DISCORD_INVITE.replace(/\/+$/, '').split('/').pop();
+        if (!inviteCode || inviteCode === 'YOUR_INVITE_CODE') {
+            setDiscordFallback();
+            return;
+        }
+
+        var inviteRes = await fetch('https://discord.com/api/v10/invites/' + encodeURIComponent(inviteCode) + '?with_counts=true&with_expiration=false');
+        if (!inviteRes.ok) throw new Error('Invite fetch failed');
+        var invite = await inviteRes.json();
+
+        var guild = invite.guild;
+        var name = guild.name;
+        var memberCount = invite.approximate_member_count || 0;
+        var onlineCount = invite.approximate_presence_count || 0;
+        var iconURL = guild.icon ? 'https://cdn.discordapp.com/icons/' + guild.id + '/' + guild.icon + '.png?size=256' : '';
+        var splashURL = guild.splash ? 'https://cdn.discordapp.com/splashes/' + guild.id + '/' + guild.splash + '.png?size=600' : '';
+        var bannerURL = guild.banner ? 'https://cdn.discordapp.com/banners/' + guild.id + '/' + guild.banner + '.png?size=600' : '';
+
+        document.getElementById('navName').textContent = name;
+        if (iconURL) {
+            var navIcon = document.getElementById('navIcon');
+            navIcon.src = iconURL; navIcon.alt = name; navIcon.classList.remove('hidden');
+            document.getElementById('navIconFallback').classList.add('hidden');
+        }
+
+        var words = name.split(' ');
+        document.getElementById('heroLine1').textContent = words.slice(0, Math.ceil(words.length / 2)).join(' ').toUpperCase();
+        document.getElementById('heroLine2').textContent = words.slice(Math.ceil(words.length / 2)).join(' ').toUpperCase();
+        document.getElementById('heroOnlineBadge').innerHTML = onlineCount + ' online now';
+
+        if (iconURL) {
+            var heroIcon = document.getElementById('heroIcon');
+            heroIcon.src = iconURL; heroIcon.alt = name; heroIcon.classList.remove('hidden');
+            document.getElementById('heroIconFallback').classList.add('hidden');
+        }
+
+        document.getElementById('statMembers').textContent = memberCount.toLocaleString();
+        document.getElementById('statOnline').textContent = onlineCount.toLocaleString();
+
+        document.getElementById('aboutName').textContent = name;
+        if (bannerURL) document.getElementById('aboutBanner').src = bannerURL;
+        else if (splashURL) document.getElementById('aboutBanner').src = splashURL;
+
+        document.getElementById('footerName').textContent = name;
+        if (iconURL) {
+            var footerIcon = document.getElementById('footerIcon');
+            footerIcon.src = iconURL; footerIcon.alt = name; footerIcon.classList.remove('hidden');
+            document.getElementById('footerIconFallback').classList.add('hidden');
+        }
+        document.getElementById('footerCopy').textContent = '© ' + new Date().getFullYear() + ' ' + name + '. Not affiliated with Mojang or Discord.';
+
+        // Widget data
         try {
-            const wRes = await fetch(`https://discord.com/api/guilds/${guildId}/widget.json`);
-            if (!wRes.ok) throw new Error(`Widget returned ${wRes.status}`);
-            widgetData = await wRes.json();
+            var widgetRes = await fetch('https://discord.com/api/v10/guilds/' + guild.id + '/widget.json');
+            if (widgetRes.ok) {
+                var widget = await widgetRes.json();
 
-            // Channel count
-            const channelCount = widgetData.channels ? widgetData.channels.length : 0;
-            if (channelCount > 0) {
-                animateNumber(document.getElementById('statChannels'), channelCount);
+                document.getElementById('statChannels').textContent = widget.channels ? widget.channels.length : 0;
+
+                if (widget.members && widget.members.length > 0) {
+                    var grid = document.getElementById('onlineMembersGrid');
+                    var show = widget.members.slice(0, 20);
+                    grid.innerHTML = show.map(function(m) {
+                        var avatar = m.avatar
+                            ? 'https://cdn.discordapp.com/guilds/' + guild.id + '/users/' + m.id + '/avatars/' + m.avatar + '.png?size=64'
+                            : 'https://cdn.discordapp.com/embed/avatars/' + (parseInt(m.id) % 5) + '.png?size=64';
+                        var statusColor = m.status === 'online' ? 'bg-green-500' : m.status === 'idle' ? 'bg-yellow-500' : m.status === 'dnd' ? 'bg-red-500' : 'bg-neutral-500';
+                        return '<div class="flex flex-col items-center gap-1.5 group" title="' + m.username + ' — ' + m.status + '">' +
+                            '<div class="relative online-dot"><img src="' + avatar + '" class="w-14 h-14 rounded-xl object-cover border border-white/10 group-hover:border-white/20 transition-colors" alt="' + m.username + '" loading="lazy"><span class="!static w-3 h-3 ' + statusColor + ' rounded-full border-2 border-[#030303] absolute -bottom-0.5 -right-0.5"></span></div>' +
+                            '<span class="text-[10px] text-neutral-500 truncate max-w-[56px]">' + m.username + '</span>' +
+                        '</div>';
+                    }).join('');
+                    if (widget.members.length > 20) {
+                        document.getElementById('onlineMoreText').textContent = '+ ' + (widget.members.length - 20) + ' more online';
+                    }
+                }
+
+                if (widget.members && widget.members.length >= 3) {
+                    document.getElementById('aboutAvatars').innerHTML = widget.members.slice(0, 3).map(function(m) {
+                        var avatar = m.avatar
+                            ? 'https://cdn.discordapp.com/guilds/' + guild.id + '/users/' + m.id + '/avatars/' + m.avatar + '.png?size=80'
+                            : 'https://cdn.discordapp.com/embed/avatars/' + (parseInt(m.id) % 5) + '.png?size=80';
+                        return '<img src="' + avatar + '" class="w-10 h-10 rounded-full border-2 border-[#050505] object-cover" alt="' + m.username + '" loading="lazy">';
+                    }).join('');
+                }
+
+                // Staff
+                if (widget.members && widget.members.length > 0) {
+                    var staffMembers = widget.members.filter(function(m) {
+                        return m.role === 'owner' || (m.role_name && /admin|mod|owner|manager|lead/i.test(m.role_name));
+                    });
+                    var staffToUse = staffMembers.length > 0 ? staffMembers : [widget.members[0]];
+                    if (staffToUse.length > 0) {
+                        document.getElementById('staffGrid').innerHTML = staffToUse.map(function(m) {
+                            var avatar = m.avatar
+                                ? 'https://cdn.discordapp.com/guilds/' + guild.id + '/users/' + m.id + '/avatars/' + m.avatar + '.png?size=256'
+                                : 'https://cdn.discordapp.com/embed/avatars/' + (parseInt(m.id) % 5) + '.png?size=256';
+                            var roleLabel = m.role === 'owner' ? 'Owner' : (m.role_name || 'Staff');
+                            var roleColor = m.role === 'owner' ? 'text-amber-400 bg-amber-500/10 border-amber-500/20' : 'text-purple-400 bg-purple-500/10 border-purple-500/20';
+                            return '<div class="reveal visible glass rounded-2xl p-6 text-center glass-hover transition-all duration-300 hover:scale-[1.02]">' +
+                                '<img src="' + avatar + '" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover border border-white/10" alt="' + m.username + '" loading="lazy">' +
+                                '<h4 class="font-semibold text-white text-sm mb-1">' + m.username + '</h4>' +
+                                '<span class="inline-block px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider border ' + roleColor + '">' + roleLabel + '</span>' +
+                            '</div>';
+                        }).join('');
+                    }
+                }
             } else {
                 document.getElementById('statChannels').textContent = '—';
             }
-
-            // Online members grid
-            renderOnlineMembers(widgetData.members, guildId);
-
-            // About avatars
-            renderAboutAvatars(widgetData.members);
-
-            // Staff
-            renderStaff(widgetData.members);
-
-        } catch (wErr) {
-            console.warn('Widget unavailable (enable it in Server Settings → Widget):', wErr.message);
+        } catch (widgetErr) {
             document.getElementById('statChannels').textContent = '—';
-            document.getElementById('onlineMembersGrid').innerHTML = '<p class="text-sm text-neutral-600 col-span-full text-center py-4">Enable <strong>Server Widget</strong> in your Discord Server Settings to show live online members here.</p>';
-            renderStaff(null);
         }
 
     } catch (err) {
-        console.error('Failed to fetch Discord data:', err);
-        updateName('The Elite GANG');
-        renderStaff(null);
-        document.getElementById('statMembers').textContent = '—';
-        document.getElementById('statOnline').textContent = '—';
-        document.getElementById('statChannels').textContent = '—';
-        document.getElementById('heroOnlineBadge').textContent = 'Could not load data';
-        document.getElementById('onlineMembersGrid').innerHTML = '<p class="text-sm text-neutral-600 col-span-full text-center py-4">Could not connect to Discord. Check your invite code in the CONFIG.</p>';
+        setDiscordFallback();
     }
 }
 
-// ── UI INTERACTIONS ──
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+function setDiscordFallback() {
+    document.getElementById('heroOnlineBadge').innerHTML = 'Click join to connect';
+    document.getElementById('statMembers').textContent = '—';
+    document.getElementById('statOnline').textContent = '—';
+    document.getElementById('statChannels').textContent = '—';
+    document.getElementById('onlineMembersGrid').innerHTML = '<p class="text-neutral-600 text-sm w-full text-center py-4">Enable Discord Widget in Server Settings → Widget to see online members here.</p>';
+    document.getElementById('staffGrid').innerHTML = '<p class="text-neutral-600 text-sm w-full text-center py-4 col-span-full">Enable Discord Widget to display staff here.</p>';
+    document.getElementById('aboutPlayerCount').textContent = 'Enable widget for live data';
+}
+
+// Mobile menu
+document.getElementById('mobileToggle').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('mobileMenu').classList.remove('open');
+    });
+});
+
+// Scroll reveal
+var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
         if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
 
-const mobileToggle = document.getElementById('mobileToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-mobileToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
+    revealObserver.observe(el);
+});
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });
 
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-    nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)';
-});
-
-// ── INIT ──
+// Init
 lucide.createIcons();
-init();
+fetchDiscordData();
 </script>
 </body>
 </html>
