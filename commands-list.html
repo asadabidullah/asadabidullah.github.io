@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands List — Docs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{font-family:'Inter',sans-serif}body{background:#050505;overflow-x:hidden}
+        ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0a0a0a}::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+        .grid-bg{background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px}
+        .glass{background:rgba(255,255,255,.03);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.06)}
+        .gradient-text{background:linear-gradient(135deg,#06b6d4,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .cmd-item { transition: all 0.2s ease; border: 1px solid transparent; }
+        .cmd-item:hover { background: rgba(6, 182, 212, 0.05); border-color: rgba(6, 182, 212, 0.2); }
+        .code-font { font-family: 'Courier New', Courier, monospace; }
+    </style>
+</head>
+<body class="text-white font-inter">
+
+<!-- Background FX -->
+<div class="fixed inset-0 grid-bg opacity-30 pointer-events-none"></div>
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+<!-- Main Doc Container -->
+<section class="relative min-h-screen flex items-center justify-center px-6 py-24">
+    <div class="max-w-4xl w-full relative z-10">
+        
+        <!-- Doc Header -->
+        <div class="mb-12 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan-500/10 mb-6">
+                <i data-lucide="terminal" class="w-8 h-8 text-cyan-500"></i>
+            </div>
+            <span class="block text-[10px] font-medium text-cyan-400 uppercase tracking-[0.2em] mb-3">Reference • Server Info</span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
+                Commands <span class="gradient-text">List</span>
+            </h1>
+            <p class="text-lg text-neutral-500 font-light">
+                Useful commands you can use on the server.
+            </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative mb-10">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500 pointer-events-none"></i>
+            <input type="text" id="searchInput" onkeyup="filterCommands()" placeholder="Search commands... (e.g. trust, claim, admin)" class="w-full glass rounded-xl pl-12 pr-4 py-4 text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-cyan-500/40 transition-colors">
+        </div>
+
+        <!-- Commands Container -->
+        <div id="commandsContainer" class="space-y-12">
+            
+            <!-- Player Commands Section -->
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                        <i data-lucide="user" class="w-5 h-5 text-cyan-500"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-white">Player Commands</h2>
+                        <p class="text-xs text-neutral-500 font-light m-0">Available to everyone. Permissions start with <span class="code-font text-cyan-400">griefprevention.</span></p>
+                    </div>
+                </div>
+                <div id="playerCmds" class="glass rounded-2xl overflow-hidden divide-y divide-white/5">
+                    <!-- Rows inserted by JS -->
+                </div>
+            </div>
+
+            <!-- Admin Commands Section -->
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-red-500"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-white">Admin Commands</h2>
+                        <p class="text-xs text-neutral-500 font-light m-0">Restricted to staff only. Permissions start with <span class="code-font text-red-400">griefprevention.</span></p>
+                    </div>
+                </div>
+                <div id="adminCmds" class="glass rounded-2xl overflow-hidden divide-y divide-white/5">
+                    <!-- Rows inserted by JS -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="hidden text-center py-12 text-neutral-500">
+            <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-4 text-neutral-600"></i>
+            <p>No commands found matching your search.</p>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    const playerCommands = [
+        { cmd: "/AbandonClaim", desc: "Deletes the claim you’re standing in.", alias: "-", perm: "claims" },
+        { cmd: "/ClaimExplosions", desc: "Toggles if explosions are allowed in the claim.", alias: "-", perm: "claims" },
+        { cmd: "/Trust", desc: "Gives another player permission to edit in your claim.", alias: "/t", perm: "claims" },
+        { cmd: "/UnTrust", desc: "Revokes any permissions granted to a player in your claim.", alias: "/ut", perm: "claims" },
+        { cmd: "/AccessTrust", desc: "Gives a player permission to use your buttons, levers, and beds.", alias: "/at", perm: "claims" },
+        { cmd: "/ContainerTrust", desc: "Gives a player permission to use your buttons, levers, beds, crafting gear, containers, and animals.", alias: "/ct", perm: "claims" },
+        { cmd: "/TrustList", desc: "Lists the permissions for the claim you’re standing in.", alias: "-", perm: "claims" },
+        { cmd: "/SubdivideClaims", desc: "Switches your shovel to subdivision mode, so you can subdivide your claims.", alias: "/sc", perm: "claims" },
+        { cmd: "/RestrictSubclaim", desc: "Restricts a subclaim, so that it inherits no permissions from the parent claim.", alias: "/rsc", perm: "claims" },
+        { cmd: "/BasicClaims", desc: "Puts your shovel back in basic claims mode.", alias: "/bc", perm: "claims" },
+        { cmd: "/PermissionTrust", desc: "Grants a player permission to share his permission level with others.", alias: "/pt", perm: "claims" },
+        { cmd: "/Untrust All", desc: "Removes all permissions for all players in your claim.", alias: "-", perm: "claims" },
+        { cmd: "/AbandonAllClaims", desc: "Deletes all of your claims.", alias: "-", perm: "claims" },
+        { cmd: "/BuyClaimBlocks", desc: "Converts server money to claim blocks.", alias: "/BuyClaim", perm: "buysellclaimblocks" },
+        { cmd: "/SellClaimBlocks", desc: "Converts claim blocks to server money.", alias: "/SellClaim", perm: "buysellclaimblocks" },
+        { cmd: "/GivePet", desc: "Gives away a tamed animal.", alias: "-", perm: "givepet" },
+        { cmd: "/ClaimsList", desc: "Lists a player’s claims and claim block details.", alias: "-", perm: "claims" },
+        { cmd: "/IgnorePlayer", desc: "Ignores a target player’s chat messages.", alias: "/Ignore", perm: "ignore" },
+        { cmd: "/UnIgnorePlayer", desc: "Un-ignores a target player’s chat messages.", alias: "/UnIgnore", perm: "ignore" },
+        { cmd: "/IgnoredPlayerList", desc: "Lists all players currently ignored.", alias: "/IgnoreList", perm: "ignore" },
+        { cmd: "/Siege", desc: "Besieges a player (disabled by default).", alias: "-", perm: "siege" },
+        { cmd: "/Trapped", desc: "Gets a player out of a land claim he’s trapped inside.", alias: "-", perm: "trapped" },
+        { cmd: "/UnlockDrops", desc: "Allows other players to pick up items you dropped when you died.", alias: "-", perm: "unlockdrops" }
+    ];
+
+    const adminCommands = [
+        { cmd: "/RestoreNature", desc: "Switches the shovel tool to restoration mode.", alias: "/rn", perm: "restorenature" },
+        { cmd: "/RestoreNatureAggressive", desc: "Switches the shovel tool to aggressive restoration mode.", alias: "/rna", perm: "restorenatureaggressive" },
+        { cmd: "/RestoreNatureFill", desc: "Switches the shovel tool to fill mode.", alias: "/rnf", perm: "restorenatureaggressive" },
+        { cmd: "/IgnoreClaims", desc: "Toggles ignore claims mode.", alias: "/ic", perm: "ignoreclaims" },
+        { cmd: "/AdminClaims", desc: "Switches the shovel tool to administrative claims mode.", alias: "/ac", perm: "adminclaims" },
+        { cmd: "/DeleteAllAdminClaims", desc: "Deletes all administrative claims.", alias: "-", perm: "adminclaims" },
+        { cmd: "/AdminClaimsList", desc: "Lists all administrative claims.", alias: "-", perm: "adminclaims" },
+        { cmd: "/AdjustBonusClaimBlocks", desc: "Adds or subtracts bonus claim blocks for a player.", alias: "/acb", perm: "adjustclaimblocks" },
+        { cmd: "/AdjustBonusClaimBlocksAll", desc: "Adds or subtracts bonus claim blocks for all online players.", alias: "-", perm: "adjustclaimblocks" },
+        { cmd: "/SetAccruedClaimBlocks", desc: "Updates a player’s accrued claim block total.", alias: "/scb", perm: "adjustclaimblocks" },
+        { cmd: "/DeleteClaim", desc: "Deletes the claim you’re standing in, even if it’s not your claim.", alias: "/dc", perm: "deleteclaims" },
+        { cmd: "/DeleteAllClaims", desc: "Deletes all of another player’s claims.", alias: "-", perm: "deleteclaims" },
+        { cmd: "/DeathBlow", desc: "Admin death blow command.", alias: "-", perm: "deathbow" },
+        { cmd: "/SoftMute", desc: "Toggles whether a player’s messages will only reach other soft-muted players.", alias: "-", perm: "softmute" },
+        { cmd: "/GPreload", desc: "Reloads Grief Prevention’s configuration settings. Does NOT totally reload the entire plugin.", alias: "-", perm: "reload" },
+        { cmd: "/TransferClaim", desc: "Converts an administrative claim to a private claim.", alias: "-", perm: "transferclaim" },
+        { cmd: "/ClaimsList", desc: "Lists information about a player’s claim blocks and claims.", alias: "-", perm: "claimslistother" },
+        { cmd: "/Separate", desc: "Forces two players to ignore each other in chat.", alias: "-", perm: "separate" },
+        { cmd: "/ClaimBook", desc: "Gives a player a manual about claiming land.", alias: "-", perm: "claimbook" },
+        { cmd: "/DeleteClaimsInWorld", desc: "Deletes all the claims in a world. Only usable at the server console.", alias: "-", perm: "deleteclaimsinworld" },
+        { cmd: "/DeleteUserClaimsInWorld", desc: "Deletes all the non-admin claims in a world. Only usable at the server console.", alias: "-", perm: "deleteclaimsinworld" },
+        { cmd: "/UnlockDrops", desc: "Admin version of unlocking drops.", alias: "-", perm: "unlockothersdrops" }
+    ];
+
+    function createCommandHTML(c, isAdmin) {
+        const aliasColor = isAdmin ? 'text-red-400' : 'text-cyan-400';
+        const cmdColor = isAdmin ? 'text-red-300' : 'text-cyan-300';
+        const tagColor = isAdmin ? 'bg-red-500/10 text-red-400' : 'bg-cyan-500/10 text-cyan-400';
+        
+        return `
+            <div class="cmd-item p-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                <div class="md:col-span-3">
+                    <span class="code-font text-sm font-semibold ${cmdColor}">${c.cmd}</span>
+                </div>
+                <div class="md:col-span-6">
+                    <p class="text-sm text-neutral-400 font-light m-0">${c.desc}</p>
+                </div>
+                <div class="md:col-span-3 flex items-center gap-2 md:justify-end">
+                    ${c.alias !== '-' ? `<span class="code-font text-xs text-neutral-500">Alias: <span class="${aliasColor}">${c.alias}</span></span>` : ''}
+                    <span class="code-font text-[10px] px-2 py-1 rounded-md ${tagColor} border border-white/5">${c.perm}</span>
+                </div>
+            </div>
+        `;
+    }
+
+    document.getElementById('playerCmds').innerHTML = playerCommands.map(c => createCommandHTML(c, false)).join('');
+    document.getElementById('adminCmds').innerHTML = adminCommands.map(c => createCommandHTML(c, true)).join('');
+
+    function filterCommands() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let items = document.getElementsByClassName('cmd-item');
+        let visibleCount = 0;
+
+        for (let i = 0; i < items.length; i++) {
+            let text = items[i].textContent || items[i].innerText;
+            if (text.toLowerCase().includes(input)) {
+                items[i].style.display = "";
+                visibleCount++;
+            } else {
+                items[i].style.display = "none";
+            }
+        }
+
+        document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
+    }
+
+    // Init icons
+    lucide.createIcons();
+</script>
+</body>
+</html>
