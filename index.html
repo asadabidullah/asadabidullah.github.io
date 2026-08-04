@@ -275,18 +275,27 @@
                     </div>
                     <div class="flex-1">
                         <h3 class="font-semibold text-white">Server IP</h3>
-                        <p class="text-xs text-neutral-500">Copy and paste into Minecraft</p>
+                        <p class="text-xs text-neutral-500">Click to copy Java IP</p>
                     </div>
                     <div id="mcStatusBadge" class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
                         Checking...
                     </div>
                 </div>
                 <div class="tooltip-copy" onclick="copyIP()">
-                    <div id="serverIPBox" class="bg-black/50 border border-green-500/20 rounded-xl px-6 py-4 font-mono text-xl text-green-400 hover:border-green-500/40 transition-colors flex items-center justify-between cursor-pointer">
-                        <span id="mcIPDisplay">yourname.joinplayit.gg</span>
+                    <div id="serverIPBox" class="bg-black/50 border border-green-500/20 rounded-xl px-6 py-4 font-mono text-lg text-green-400 hover:border-green-500/40 transition-colors flex items-center justify-between cursor-pointer">
+                        <div class="flex flex-col gap-2">
+                            <div>
+                                <span class="text-xs text-neutral-500 uppercase mr-2">Java:</span>
+                                <span id="mcIPDisplay">wills-imagery.tun.ply.gg:25565</span>
+                            </div>
+                            <div>
+                                <span class="text-xs text-neutral-500 uppercase mr-2">Bedrock:</span>
+                                <span id="mcBedrockIPDisplay">wills-adaptation.tun.ply.gg:37689</span>
+                            </div>
+                        </div>
                         <i data-lucide="copy" class="w-5 h-5 text-green-500/60"></i>
                     </div>
-                    <span class="tooltip-text">Click to copy!</span>
+                    <span class="tooltip-text">Click to copy Java IP!</span>
                 </div>
                 <div class="grid grid-cols-2 gap-3 mt-4">
                     <div class="bg-black/30 border border-white/5 rounded-lg px-3 py-2 text-center">
@@ -483,8 +492,12 @@
 // Your Discord invite link
 const DISCORD_INVITE = 'https://discord.gg/7vuj3HU4vs';
 
-// Your Minecraft server IP (playit.gg or freemcserver)
-const MC_IP = 'since-performance.gl.joinmc.link';
+// Your Minecraft server IPs
+const JAVA_IP = 'wills-imagery.tun.ply.gg:25565';
+const BEDROCK_IP = 'wills-adaptation.tun.ply.gg:37689';
+
+// The status checker uses the Java IP to get live data (Geyser players will show up here)
+const MC_IP = JAVA_IP;
 
 // ── STAFF ROLES ──
 // Type the EXACT names of your staff roles in Discord.
@@ -549,15 +562,17 @@ document.querySelectorAll('#navJoinBtn, #mobileJoinBtn, #heroJoinBtn, #ctaJoinBt
 
 // Set MC IP display
 var mcIPDisplay = document.getElementById('mcIPDisplay');
-if (mcIPDisplay) mcIPDisplay.textContent = MC_IP;
+if (mcIPDisplay) mcIPDisplay.textContent = JAVA_IP;
+var mcBedrockIPDisplay = document.getElementById('mcBedrockIPDisplay');
+if (mcBedrockIPDisplay) mcBedrockIPDisplay.textContent = BEDROCK_IP;
 
 // Copy IP
 function copyIP() {
-    navigator.clipboard.writeText(MC_IP).then(function() {
+    navigator.clipboard.writeText(JAVA_IP).then(function() {
         showToast();
     }).catch(function() {
         var ta = document.createElement('textarea');
-        ta.value = MC_IP;
+        ta.value = JAVA_IP;
         ta.style.position = 'fixed';
         ta.style.left = '-9999px';
         document.body.appendChild(ta);
