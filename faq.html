@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — Docs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{font-family:'Inter',sans-serif}body{background:#050505;overflow-x:hidden}
+        ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0a0a0a}::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+        .grid-bg{background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px}
+        .glass{background:rgba(255,255,255,.03);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.06)}
+        .glass-hover:hover{background:rgba(255,255,255,.06);border-color:rgba(236,72,153,.2)}
+        .gradient-text{background:linear-gradient(135deg,#ec4899,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    </style>
+</head>
+<body class="text-white font-inter">
+
+<!-- Background FX -->
+<div class="fixed inset-0 grid-bg opacity-30 pointer-events-none"></div>
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-pink-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+<!-- Main Doc Container -->
+<section class="relative min-h-screen flex items-center justify-center px-6 py-24">
+    <div class="max-w-3xl w-full relative z-10">
+        
+        <!-- Doc Header -->
+        <div class="mb-12 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-pink-500/10 mb-6">
+                <i data-lucide="message-circle-question" class="w-8 h-8 text-pink-500"></i>
+            </div>
+            <span class="block text-[10px] font-medium text-pink-400 uppercase tracking-[0.2em] mb-3">FAQ • Support</span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
+                Frequently Asked <span class="gradient-text">Questions</span>
+            </h1>
+            <p class="text-lg text-neutral-500 font-light">
+                Common questions and answers about the server.
+            </p>
+        </div>
+
+        <!-- Main Content Card -->
+        <div class="glass rounded-3xl p-8 md:p-12 mb-8 text-center">
+            
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-pink-500/10 mb-8 border border-pink-500/20">
+                <i data-lucide="inbox" class="w-10 h-10 text-pink-400"></i>
+            </div>
+
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">No FAQ Yet</h2>
+            <p class="text-neutral-400 font-light leading-relaxed max-w-lg mx-auto mb-8 m-0">
+                We haven't added any frequently asked questions yet. The server is very easy to use—just jump in, follow the basic getting started steps, and you'll be building in no time.
+            </p>
+
+            <!-- Why it's easy grid -->
+            <div class="grid sm:grid-cols-3 gap-4 mt-10 pt-10 border-t border-white/5">
+                <div class="glass glass-hover rounded-xl p-4">
+                    <i data-lucide="rocket" class="w-6 h-6 text-pink-400 mx-auto mb-2"></i>
+                    <p class="text-sm text-neutral-300 font-medium m-0">Instant Play</p>
+                </div>
+                <div class="glass glass-hover rounded-xl p-4">
+                    <i data-lucide="puzzle" class="w-6 h-6 text-pink-400 mx-auto mb-2"></i>
+                    <p class="text-sm text-neutral-300 font-medium m-0">No Mods Required</p>
+                </div>
+                <div class="glass glass-hover rounded-xl p-4">
+                    <i data-lucide="heart" class="w-6 h-6 text-pink-400 mx-auto mb-2"></i>
+                    <p class="text-sm text-neutral-300 font-medium m-0">Chill Community</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Still Confused Callout -->
+        <div class="glass rounded-2xl p-6 border-l-4 border-pink-500/50">
+            <p class="text-neutral-300 font-light text-sm leading-relaxed m-0 flex items-start gap-3">
+                <i data-lucide="life-buoy" class="w-5 h-5 text-pink-400 flex-shrink-0 mt-0.5"></i>
+                <span><span class="font-medium text-white">Still confused?</span> Don't sweat it. Just hop into our Discord server and ask a staff member or a fellow gang member. We're happy to help you get started!</span>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    // Init icons
+    lucide.createIcons();
+</script>
+</body>
+</html>
